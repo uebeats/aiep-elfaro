@@ -1,0 +1,323 @@
+@extends('layouts.app')
+
+@section('content')
+    <header>
+        <div class="collapse bg-dark" id="navbarHeader">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-md-7 py-4">
+                        <h4 class="text-light">Nosotros</h4>
+                        <p class="text-light">En El Faro, nos dedicamos al periodismo de calidad y a la
+                            integridad informativa. Somos tu fuente confiable de noticias precisas y análisis profundos,
+                            comprometidos con iluminar la verdad en un mundo lleno de información.
+                        </p>
+                    </div>
+                    <div class="col-sm-4 offset-md-1 py-4">
+                        <h4 class="text-light">Contacto</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-white">Síguenos en X</a></li>
+                            <li><a href="#" class="text-white">Danos Like en Facebook</a></li>
+                            <li><a href="mailto:elfaro@elfaro.com" class="text-white">Escríbenos un Email</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+            <div class="container">
+                <a href="{{ route('home') }}" class="navbar-brand d-flex align-items-center">
+                    <svg width="23" viewBox="0 0 12 24" class="isotipo" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M5.56561 0L3.10432 1.14669V2.15157H3.43875V4.62954H2.9744V4.28334H2.53536V5.72554H3.17508L1.8595 21.4757H0V23.0188H11.1313V21.4757H9.27171L7.95613 5.72554H8.59586V4.28334H8.15675V4.62954H7.69247V2.15157H8.02689V1.14669L5.56561 0ZM3.82525 2.18638H7.30603V4.65932H3.82525V2.18638ZM6.4909 17.5536H7.89056V21.2976H6.4909V17.5536Z" />
+                    </svg>
+                    <span class="logotipo">El Faro</span>
+                </a>
+                <button type="button" class="btn btn-primary ms-auto me-2" data-bs-toggle="modal"
+                    data-bs-target="#addNewsModal">Añadir noticia</button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
+                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="publicidad" class="container">
+            <div class="row">
+                <div class="col">
+                    <h6 class="mt-2">Publicidad/Ads</h6>
+                    <div class="card">
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 text-center container portada" style="background-image: url('{{ asset('/images/dot-grid.webp')}}'); background-repeat: repeat;">
+            <div class="row py-lg-5">
+                <div class="col-lg-10 col-md-8 mx-auto">
+                    <h1 class="fw-bold">
+                        ¡Tu nueva brújula informativa!
+                    </h1>
+                    <p class="lead text-body-secondary">En un océano de datos y noticias, nuestro compromiso es guiarte
+                        hacia la verdad con reportajes profundos, análisis objetivos y una cobertura confiable y
+                        actualizada. Navega con nosotros y mantente informado sobre los eventos más importantes, tanto
+                        locales como globales. <br> ¡Con <strong>El Faro</strong>, iluminamos el camino hacia la
+                        información que importa!
+                    </p>
+                    <div class="show-hora d-flex flex-row gap-1 justify-content-center">
+                        <div id="DiaSemana"></div>
+                        <div id="Dia"></div>
+                        <div id="Mes"></div>
+                        <div id="Year"></div>
+                        -
+                        <div id="Horas"></div>:
+                        <div id="Minutos"></div>:
+                        <div id="Segundos"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="album py-5 bg-body-tertiary">
+            <div id="destacados" class="container">
+                <div class="row pt-3 pb-1">
+                    <div class="col">
+                        <h2>Destacados</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <div class="card mb-3">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <div class="tag-categoria">
+                                        <span class="badge bg-danger">
+                                            Noticias
+                                        </span>
+                                    </div>
+                                    <img src="https://static.emol.cl/emol50/Fotos/2024/03/30/file_20240330095152.jpg"
+                                        class="img-fluid rounded-start" alt="Soldados">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Mayor del Ejército chileno resulta lesionada en incidente
+                                            en Líbano</h5>
+                                        <p class="card-text">El Ministerio de Defensa Nacional informó que este sábado
+                                            30 de marzo, aproximadamente a las 9.00 hora local de Líbano.
+                                        </p>
+                                        <p class="card-text"><small class="text-body-secondary">
+                                                Actualizado por ultima vez hace 3 minutos</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="card mb-3">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <div class="tag-categoria">
+                                        <span class="badge bg-danger">
+                                            Deportes
+                                        </span>
+                                    </div>
+                                    <img src="https://static.emol.cl/emol50/Fotos/2024/03/29/file_20240329123744.jpg"
+                                        class="img-fluid rounded-start" alt="Arturo">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">La difícil situación que atraviesa Arturo Vidal</h5>
+                                        <p class="card-text">El fichaje de Arturo Vidal por Colo Colo marcó un hito
+                                            significativo en el panorama reciente del fútbol chileno.</p>
+                                        <p class="card-text"><small class="text-body-secondary">Actualizado por ultima
+                                                vez hace 3 minutos</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row pt-5 pb-1">
+                    <div class="col">
+                        <h2>Noticias</h2>
+                    </div>
+                </div>
+                <div id="noticias" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"></div>
+
+                <div class="row pt-5 pb-1">
+                    <div class="col">
+                        <h2>Deportes</h2>
+                    </div>
+                </div>
+                <div id="deportes" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"></div>
+
+                <div class="row pt-5 pb-1">
+                    <div class="col">
+                        <h2>Negocios</h2>
+                    </div>
+                </div>
+                <div id="economia" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"></div>
+
+                <section id="publicidad" class="container">
+                    <div class="row">
+                        <div class="col">
+                            <h6 class="mt-2">Publicidad/Ads</h6>
+                            <div class="card">
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <section class="container">
+            <div class="row justify-content-center py-5">
+                <div class="col-lg-4 col-12">
+                    <h2>Formulario de Contacto</h2>
+                    <form action="" method="post">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" name="nombre" id="nombre" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" name="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="mensaje" class="form-label">Mensaje</label>
+                            <textarea name="mensaje" id="mensaje" cols="30" rows="5" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div class="container">
+        <footer class="py-5">
+            <div class="row">
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>Información</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Términos y
+                                condiciones</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Políticas de
+                                privacidad</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Quiénes Somos</a>
+                        </li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Empresa</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>Enlaces de interes</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Tendencias</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Servicios</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">El Faro TV</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">El Faro Fotos</a>
+                        </li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">El Faro Autos</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>Categorias</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Noticias</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Deportes</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Economia</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Legal</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Tecnología</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-5 offset-md-1 mb-3">
+                    <form>
+                        <h5>Suscribete a nuestro boletín</h5>
+                        <p>Nos comprometemos a no enviar SPAM a tu bandeja de entrada</p>
+                        <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                            <label for="newsletter1" class="visually-hidden">Correo Electrónico</label>
+                            <input id="newsletter1" type="text" class="form-control"
+                                placeholder="Correo Electrónico">
+                            <button class="btn btn-primary" type="button">Suscribir</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+                <p>© 2024 El Faro, Inc. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal para agregar noticias -->
+    <div class="modal fade" id="addNewsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Noticia</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="categoriaNoticia" class="form-label">Categorias</label>
+                            <select name="categoriaNoticia" id="categoriaNoticia" class="form-select" required>
+                                <option value="noticias">Noticias</option>
+                                <option value="deportes">Deportes</option>
+                                <option value="negocios">Negocios</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="titularNoticia" class="form-label">Titular o nombre Noticia</label>
+                            <input type="text" name="titularNoticia" id="titularNoticia" class="form-control"
+                                placeholder="Aquí debes colocar el titular">
+                        </div>
+                        <div class="mb-3">
+                            <label for="imagenNoticia" class="form-label">URL imagen de Noticia</label>
+                            <input type="text" name="imagenNoticia" id="imagenNoticia" class="form-control"
+                                placeholder="https://">
+                        </div>
+                        <div class="mb-3">
+                            <label for="cuerpoNoticia" class="form-label">Cuerpo de la Noticia</label>
+                            <textarea name="cuerpoNoticia" id="cuerpoNoticia" cols="30" rows="5" class="form-control"
+                                placeholder="Aquí debes colocar el cuerpo de la noticia..."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="buttonAddNews">Crear Noticia</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para mostrar noticias -->
+    <div class="modal fade" id="showNewsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalTitle"></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalBody"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
