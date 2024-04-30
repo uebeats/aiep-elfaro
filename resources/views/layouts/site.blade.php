@@ -21,6 +21,51 @@
 <body>
     <div id="app">
         <header>
+            @auth
+            <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+                <div class="container">
+                    <a class="navbar-brand fw-bold" href="{{ url('/') }}">
+                        {{ __('Control Panel') }}
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+    
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <!-- Left Side Of Navbar -->
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('articulos.create') }}">
+                                    {{ __('+ Añadir noticia') }}
+                                </a>
+                            </li>
+                        </ul>
+    
+                        <!-- Right Side Of Navbar -->
+                        <ul class="navbar-nav ms-auto">
+                            <!-- Authentication Links -->
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Bienvenido, {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Salir') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            @endauth
             <div class="collapse bg-dark" id="navbarHeader">
                 <div class="container">
                     <div class="row">
@@ -53,12 +98,9 @@
                         <span class="logotipo">El Faro</span>
                     </a>
                     @guest
-                        @auth
-                            <button type="button" class="btn btn-primary ms-auto me-2" data-bs-toggle="modal"
-                                data-bs-target="#addNewsModal">Añadir noticia</button>
-                        @else
-                            <a href="{{ route('login') }}" class="btn btn-success ms-auto me-2">Iniciar Sesión</a>
-                        @endauth
+                        <a href="{{ route('login') }}" class="btn btn-success ms-auto me-2">
+                            {{ __('Iniciar Sesión') }}
+                        </a>
                     @endguest
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false"
@@ -68,11 +110,11 @@
                 </div>
             </div>
         </header>
-        <main class="py-4">
+        <main class="py-5">
             @yield('content')
         </main>
-        <div class="container">
-            <footer class="py-0">
+        <footer class="py-4 bg-body-tertiary">
+            <div class="container">
                 <div class="row">
                     <div class="col-6 col-md-2 mb-3">
                         <h5>Información</h5>
@@ -115,8 +157,10 @@
                             </li>
                             <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Economia</a>
                             </li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Legal</a></li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Tecnología</a>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Legal</a>
+                            </li>
+                            <li class="nav-item mb-2"><a href="#"
+                                    class="nav-link p-0 text-muted">Tecnología</a>
                             </li>
                         </ul>
                     </div>
@@ -138,8 +182,9 @@
                 <div class="d-flex flex-column flex-sm-row justify-content-between pt-4 mt-4 border-top">
                     <p>© 2024 El Faro, Inc. Todos los derechos reservados.</p>
                 </div>
-            </footer>
-        </div>
+            </div>
+        </footer>
+
     </div>
     <script>
         // Función para mostrar fecha y hora en tiempo real

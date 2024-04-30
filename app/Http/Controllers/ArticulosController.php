@@ -20,7 +20,7 @@ class ArticulosController extends Controller
      */
     public function create()
     {
-        //
+        return view('articulos.create');
     }
 
     /**
@@ -28,7 +28,23 @@ class ArticulosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+            'image' => 'required',
+            'category_id' => 'required',
+            'is_featured' => 'required',
+        ]);
+
+        $articulo = new Articulos();
+        $articulo->title = $request->title;
+        $articulo->content = $request->content;
+        $articulo->image = $request->image;
+        $articulo->category_id = $request->category_id;
+        $articulo->is_featured = $request->is_featured;
+        $articulo->save();
+
+        return redirect()->route('articulos.create')->with('success', 'Articulo creado correctamente');
     }
 
     /**

@@ -18,8 +18,14 @@ use App\Http\Controllers\HomeController;
 |
 */
 
+// Esta ruta es la ruta principal de la aplicación.
 Route::get('/', [HomeController::class, 'index'])->name('home');
+// Esta ruta es la ruta que muestra la noticia en base al id.
 Route::get('post/{id}', [HomeController::class, 'show'])->name('post.show');
+
+// La función middleware('auth') permite proteger las rutas para que solo puedan ser accedidas
 Auth::routes();
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+// Las rutas resources son rutas que permiten realizar todas las operaciones CRUD
+// sobre un recurso en una sola línea de código.
+Route::resource('articulos', ArticulosController::class);
