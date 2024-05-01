@@ -32,6 +32,7 @@
                     </button>
     
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        @if (Auth::user()->role == 'admin' || Auth::user()->role == 'editor')
                         <!-- Left Side Of Navbar -->
                         <ul class="navbar-nav me-auto">
                             <li class="nav-item">
@@ -39,8 +40,15 @@
                                     {{ __('+ Añadir noticia') }}
                                 </a>
                             </li>
+                            @if (Auth::user()->role == 'admin')
+                            <li class="nav-item">
+                                <a href="{{ route('usuarios.index') }}" class="nav-link">
+                                    {{ __('Ver lista de usuarios') }}
+                                </a>
+                            </li>
+                            @endif
                         </ul>
-    
+                        @endif
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ms-auto">
                             <!-- Authentication Links -->

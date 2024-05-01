@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-5">
+            <div class="col-lg-5 col-12">
                 <h1 class="display-5 fw-bold">Crear artículo</h1>
                 <p class="fs-5">Completa el siguiente formulario para crear un nuevo artículo.</p>
                 <form action="{{ route('articulos.store') }}" method="POST">
