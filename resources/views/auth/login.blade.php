@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div id="login" class="container">
     <div class="row justify-content-center">
         <div class="col-md-5">
             <div class="card">
@@ -56,6 +56,16 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Ingresar a Plataforma') }}
                                 </button>
+                            </div>
+                        </div>
+
+                        <div class="row my-5">
+                            <div class="col">
+                                <ul>
+                                    <li>admin@alejandria.com | Pass: admin12345</li>
+                                    <li>editor@alejandria.com | Pass: editor12345</li>
+                                    <li>usuario@alejandria.com | Pass: usuario12345</li>
+                                </ul>
                             </div>
                         </div>
                     </form>

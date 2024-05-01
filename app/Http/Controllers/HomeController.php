@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Articulos;
-use App\Models\Categorias;
 
 class HomeController extends Controller
 {
@@ -24,6 +23,11 @@ class HomeController extends Controller
     public function show(Request $request)
     {
         $post = Articulos::where('id', $request->id)->first();
+        if (!$post) {
+            // error 404
+            abort(404);
+        }
+
         return view('show', compact('post'));
     }
 }
