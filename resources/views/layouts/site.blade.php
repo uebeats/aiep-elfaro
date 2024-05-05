@@ -46,6 +46,11 @@
                                     {{ __('Ver lista de usuarios') }}
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ route('contacto.index') }}" class="nav-link">
+                                    {{ __('Ver lista de contactos') }}
+                                </a>
+                            </li>
                             @endif
                         </ul>
                         @endif

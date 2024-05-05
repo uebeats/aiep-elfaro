@@ -103,7 +103,7 @@
                                     <h5 class="card-title">{{ $post->title }}</h5>
                                     <p class="card-text">{{ $post->content }}</p>
                                     <button class="btn btn-sm btn-outline-secondary ver-noticia"
-                                        data-id="{{ $post->id }}" data-toggle="modal" data-target="#showNewsModal">Ver
+                                        data-id="{{ $post->id }}">Ver
                                         Noticia</button>
                                 </div>
                             </div>
@@ -132,7 +132,7 @@
                                     <h5 class="card-title">{{ $post->title }}</h5>
                                     <p class="card-text">{{ $post->content }}</p>
                                     <button class="btn btn-sm btn-outline-secondary ver-noticia"
-                                        data-id="{{ $post->id }}" data-toggle="modal" data-target="#showNewsModal">Ver
+                                        data-id="{{ $post->id }}">Ver
                                         Noticia</button>
                                 </div>
                             </div>
@@ -161,7 +161,7 @@
                                     <h5 class="card-title">{{ $post->title }}</h5>
                                     <p class="card-text">{{ $post->content }}</p>
                                     <button class="btn btn-sm btn-outline-secondary ver-noticia"
-                                        data-id="{{ $post->id }}" data-toggle="modal" data-target="#showNewsModal">Ver
+                                        data-id="{{ $post->id }}">Ver
                                         Noticia</button>
                                 </div>
                             </div>
@@ -189,7 +189,8 @@
         <div class="row justify-content-center py-5">
             <div class="col-lg-4 col-12">
                 <h2>Formulario de Contacto</h2>
-                <form action="" method="post">
+                <form action="{{ route('contacto.store') }}" method="post">
+                    @csrf
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Nombre</label>
                         <input type="text" name="nombre" id="nombre" class="form-control" required>
@@ -202,8 +203,27 @@
                         <label for="mensaje" class="form-label">Mensaje</label>
                         <textarea name="mensaje" id="mensaje" cols="30" rows="5" class="form-control" required></textarea>
                     </div>
+
                     <button type="submit" class="btn btn-primary">Enviar</button>
                 </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul class="m-0">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             </div>
         </div>
     </section>

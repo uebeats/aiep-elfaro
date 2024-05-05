@@ -7,6 +7,7 @@ use App\Http\Controllers\ArticulosController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ContactoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +36,4 @@ Route::get('/usuarios', [UsersController::class, 'index'])
 // Las rutas resources son rutas que permiten realizar todas las operaciones CRUD
 // sobre un recurso en una sola línea de código.
 Route::resource('articulos', ArticulosController::class);
+Route::resource('contacto', ContactoController::class)->middleware('auth');

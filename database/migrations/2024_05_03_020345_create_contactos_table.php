@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('email');
             $table->text('mensaje');
-            // logica de negocio para validar si esta leido o no
             $table->boolean('status')->default(false);
             $table->timestamps();
         });
