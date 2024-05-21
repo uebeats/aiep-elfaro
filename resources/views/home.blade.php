@@ -201,7 +201,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="mensaje" class="form-label">Mensaje</label>
-                        <textarea name="mensaje" id="mensaje" cols="30" rows="5" class="form-control" required></textarea>
+                        <textarea name="mensaje" id="mensaje" cols="30" rows="5" class="form-control" required maxlength="255"></textarea>
+                        <span>Máximo 255 caracteres</span>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Enviar</button>
@@ -227,47 +228,4 @@
             </div>
         </div>
     </section>
-
-    <!-- Modal para agregar noticias -->
-    <div class="modal fade" id="addNewsModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Noticia</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="categoriaNoticia" class="form-label">Categorias</label>
-                            <select name="categoriaNoticia" id="categoriaNoticia" class="form-select" required>
-                                <option value="noticias">Noticias</option>
-                                <option value="deportes">Deportes</option>
-                                <option value="negocios">Negocios</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="titularNoticia" class="form-label">Titular o nombre Noticia</label>
-                            <input type="text" name="titularNoticia" id="titularNoticia" class="form-control"
-                                placeholder="Aquí debes colocar el titular">
-                        </div>
-                        <div class="mb-3">
-                            <label for="imagenNoticia" class="form-label">URL imagen de Noticia</label>
-                            <input type="text" name="imagenNoticia" id="imagenNoticia" class="form-control"
-                                placeholder="https://">
-                        </div>
-                        <div class="mb-3">
-                            <label for="cuerpoNoticia" class="form-label">Cuerpo de la Noticia</label>
-                            <textarea name="cuerpoNoticia" id="cuerpoNoticia" cols="30" rows="5" class="form-control"
-                                placeholder="Aquí debes colocar el cuerpo de la noticia..."></textarea>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" id="buttonAddNews">Crear Noticia</button>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
