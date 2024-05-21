@@ -17,6 +17,6 @@ if (!function_exists('getNewsByCategory')) {
 
     function getNewsByCategory($category_id, $id_article)
     {
-        return Articulos::where('category_id', $category_id)->where('id', '!=', $id_article)->limit(3)->get();
+        return Articulos::where('category_id', $category_id)->where('id', '!=', $id_article)->limit(2)->get();
     }
 }
